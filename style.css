@@ -1,0 +1,285 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #666;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+/* HOJA CARTA WEB */
+#cotizacion {
+    background: white;
+    width: 794px;
+    /* Ancho exacto A4 screen */
+    min-height: 1000px;
+    padding: 25px 35px;
+    /* Padding interno equilibrado */
+    position: relative;
+}
+
+/* ENCABEZADO */
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    width: 130px;
+    height: auto;
+    display: block;
+}
+
+.info-empresa {
+    text-align: right;
+    color: #333;
+}
+
+.info-empresa h1 {
+    font-size: 15px;
+    margin: 0;
+    color: #004481;
+    font-weight: 900;
+}
+
+.info-empresa h2 {
+    font-size: 10px;
+    margin: 2px 0;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+.info-empresa p {
+    font-size: 10px;
+    margin: 1px 0;
+    color: #444;
+}
+
+.cintillo {
+    background: #004481;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px;
+    margin-bottom: 15px;
+}
+
+/* DATOS */
+.datos-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.col-cliente {
+    flex: 1;
+}
+
+.col-folio {
+    width: 200px;
+}
+
+.fila-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.fila-input label {
+    width: 60px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.fila-input input {
+    flex: 1;
+    border: 1px solid #ddd;
+    background: #fdfdfd;
+    padding: 3px;
+    font-size: 11px;
+    font-family: inherit;
+}
+
+.col-folio input {
+    text-align: right;
+}
+
+.texto-dias {
+    display: block;
+    text-align: right;
+    font-size: 9px;
+    color: #888;
+    margin-top: -2px;
+}
+
+/* TABLA */
+.tabla-wrap {
+    margin-bottom: 5px;
+    min-height: 150px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+th {
+    background: #eee;
+    border-bottom: 2px solid #004481;
+    padding: 5px;
+    text-align: left;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    padding: 4px;
+    vertical-align: middle;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Inputs Tabla */
+td input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 11px;
+    padding: 0;
+}
+
+td input.qty,
+td input.precio {
+    text-align: center;
+}
+
+/* FOOTER COMPACTO */
+.footer-section {
+    margin-top: 20px;
+    page-break-inside: avoid;
+}
+
+.totales-box {
+    width: 220px;
+    margin-left: auto;
+    margin-bottom: 15px;
+}
+
+.linea-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+.gran-total {
+    font-weight: bold;
+    color: #004481;
+    font-size: 13px;
+    border-top: 2px solid #333;
+    padding-top: 2px;
+    margin-top: 2px;
+}
+
+.legales {
+    font-size: 9px;
+    color: #555;
+    margin-bottom: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 5px;
+}
+
+.legales ul {
+    padding-left: 15px;
+    margin: 2px 0;
+}
+
+.firmas-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.caja-firma {
+    width: 40%;
+    text-align: center;
+}
+
+.linea {
+    border-bottom: 1px solid #333;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.caja-firma p {
+    font-size: 10px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.caja-firma span {
+    font-weight: normal;
+    font-size: 9px;
+    color: #777;
+}
+
+.final-text {
+    text-align: center;
+    font-size: 8px;
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* BOTONES (UI) */
+.btn-mini {
+    background: #28a745;
+    color: white;
+    border: none;
+    font-size: 10px;
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+.controles {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.btn-descargar {
+    background: #004481;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* MODO PDF */
+.modo-pdf .no-print {
+    display: none !important;
+}
+
+.modo-pdf input {
+    border: none !important;
+    background: transparent !important;
+}
+
+.modo-pdf #cotizacion {
+    margin: 0;
+    box-shadow: none;
+    border: none;
+}

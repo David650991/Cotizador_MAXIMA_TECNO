@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador MÁXIMA TECNO</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <div id="cotizacion">
+
+    <header class="header-flex">
+      <div class="logo-container">
+        <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" alt="Logo" id="img-logo">
+      </div>
+
+      <div class="info-empresa">
+        <h1>MÁXIMA TECNO MULTISERVICIOS</h1>
+        <h2>SOLUCIONES TECNOLÓGICAS CONFIABLES</h2>
+        <p>Calle Guadalupe Victoria S/N, Col. Patricio Chirinos</p>
+        <p>C.P. 95300, Tres Valles, Ver. | Tel: 288 139 69 42</p>
+        <p>maximatecnomultiservicios@gmail.com</p>
+      </div>
+    </header>
+
+    <div class="cintillo">COTIZACIÓN DE SERVICIOS</div>
+
+    <div class="datos-grid">
+      <div class="col-cliente">
+        <div class="fila-input">
+          <label>Cliente:</label>
+          <input type="text" id="cliente" placeholder="Nombre del cliente">
+        </div>
+        <div class="fila-input">
+          <label>Tel:</label>
+          <input type="text" id="telefono" placeholder="Teléfono">
+        </div>
+        <div class="fila-input">
+          <label>Dirección:</label>
+          <input type="text" id="direccion" placeholder="Dirección">
+        </div>
+      </div>
+
+      <div class="col-folio">
+        <div class="fila-input">
+          <label>Folio:</label>
+          <input type="text" id="folio" readonly>
+        </div>
+        <div class="fila-input">
+          <label>Fecha:</label>
+          <input type="date" id="fecha">
+        </div>
+        <div class="fila-input">
+          <label>Vence:</label>
+          <input type="date" id="vigencia" readonly>
+        </div>
+        <small class="texto-dias">(15 días naturales)</small>
+      </div>
+    </div>
+
+    <div class="tabla-wrap">
+      <table id="tabla-productos">
+        <thead>
+          <tr>
+            <th style="width: 10%">Cant.</th>
+            <th style="width: 55%">Descripción</th>
+            <th style="width: 15%">P. Unit.</th>
+            <th style="width: 15%">Importe</th>
+            <th style="width: 5%" class="no-print"></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-productos">
+        </tbody>
+      </table>
+    </div>
+
+    <button id="agregar" class="btn-mini no-print">+ Agregar</button>
+
+    <div class="footer-section">
+
+      <div class="totales-box">
+        <div class="linea-total"><span>Subtotal:</span> <span id="subtotal">$0.00</span></div>
+        <div class="linea-total"><span>IVA (16%):</span> <span id="iva">$0.00</span></div>
+        <div class="linea-total gran-total"><span>TOTAL:</span> <span id="total">$0.00</span></div>
+      </div>
+
+      <div class="legales">
+        <strong>Términos y Condiciones:</strong>
+        <ul>
+          <li>Tiempo de entrega: a partir del anticipo.</li>
+          <li>Forma de pago: 50% anticipo, 50% al finalizar satisfacción.</li>
+          <li>Precios sujetos a cambio sin previo aviso.</li>
+        </ul>
+      </div>
+
+      <div class="firmas-flex">
+        <div class="caja-firma">
+          <div class="linea"></div>
+          <p>Luis Alberto Álvarez Urbano<br><span>Gerente General</span></p>
+        </div>
+        <div class="caja-firma">
+          <div class="linea"></div>
+          <p>Firma del Cliente<br><span>Aceptación</span></p>
+        </div>
+      </div>
+
+      <div class="final-text">
+        MÁXIMA TECNO MULTISERVICIOS | Documento Digital
+      </div>
+    </div>
+
+  </div>
+
+  <div class="controles no-print">
+    <button id="descargarPDF" class="btn-descargar">Descargar PDF</button>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
