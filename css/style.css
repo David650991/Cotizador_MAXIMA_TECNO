@@ -394,3 +394,25 @@ td input.precio {
     padding: 0 !important;
     font-size: 11px !important;
 }
+
+/* --- PEGA ESTO AL FINAL DE TU CSS ACTUAL O REEMPLÁZALO --- */
+
+/* ... (Mantén tus estilos generales anteriores de body, table, inputs) ... */
+
+/* AGREGAR ESTO AL FINAL DEL ARCHIVO: */
+
+/* Clase especial para ocultar elementos HTML cuando se genera el PDF */
+.modo-pdf .ocultar-en-pdf {
+    display: none !important;
+}
+
+/* Ajuste para que la tabla no se corte a la mitad de una fila */
+tr {
+    page-break-inside: avoid;
+}
+
+.modo-pdf {
+    /* Quitamos padding porque los márgenes los pondrá el PDF */
+    padding: 0 !important; 
+    width: 100% !important;
+}
