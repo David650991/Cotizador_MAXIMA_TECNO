@@ -1,91 +1,396 @@
-/* RESET */
-* { box-sizing: border-box; }
-body { 
-    background: #525659; font-family: Arial, sans-serif; 
-    margin: 0; padding: 20px; 
-    display: flex; flex-direction: column; align-items: center; 
+/* --- ESTILOS GENERALES (BASE DESKTOP) --- */
+* {
+    box-sizing: border-box;
 }
 
-/* ENCABEZADO WEB (Solo pantalla) */
-.header-web {
-    width: 100%; max-width: 800px; background: white; padding: 10px 20px;
-    border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 20px;
+body {
+    background: #525659;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    /* Ajuste para móviles */
+    flex-direction: column;
+    align-items: center;
 }
-.header-web img { width: 80px; }
-.header-web h1 { font-size: 16px; color: #004481; margin: 0; }
 
-/* DOCUMENTO PAPEL */
-#documento-pdf {
+/* La Hoja "Papel" */
+#cotizacion {
     background: white;
-    width: 800px; /* Ancho fijo A4 aprox */
+    width: 794px;
+    /* Ancho fijo para PC */
+    max-width: 100%;
+    /* Para que no se salga en móviles */
     min-height: 1000px;
-    padding: 40px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    padding: 30px 40px;
     position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Encabezado */
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    width: 130px;
+    height: auto;
+    display: block;
+}
+
+.info-empresa {
+    text-align: right;
+    color: #333;
+}
+
+.info-empresa h1 {
+    font-size: 15px;
+    margin: 0;
+    color: #004481;
+    font-weight: 900;
+}
+
+.info-empresa h2 {
+    font-size: 10px;
+    margin: 2px 0;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+.info-empresa p {
+    font-size: 10px;
+    margin: 1px 0;
+    color: #444;
 }
 
 .cintillo {
-    background: #004481; color: white; text-align: center; 
-    font-weight: bold; padding: 5px; margin-bottom: 25px; font-size: 14px;
+    background: #004481;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 20px;
 }
 
-/* SECCION DATOS */
-.seccion-datos { display: flex; justify-content: space-between; gap: 30px; margin-bottom: 20px; }
-.col-izq, .col-der { flex: 1; }
-
-.dato-fila { display: flex; align-items: center; margin-bottom: 5px; }
-.dato-fila label { width: 70px; font-size: 11px; font-weight: bold; }
-.input-full { 
-    flex: 1; border: 1px solid #ccc; padding: 4px; font-size: 11px; 
-    background: #fdfdfd; font-family: inherit; 
-}
-.derecha { text-align: right; }
-
-/* TABLA ROBUSTA */
-.tabla-wrap { margin-bottom: 10px; }
-table { width: 100%; border-collapse: collapse; font-size: 11px; }
-th { background: #eee; border-bottom: 2px solid #004481; padding: 6px; text-align: left; }
-td { border-bottom: 1px solid #eee; padding: 4px; vertical-align: middle; }
-
-/* Inputs dentro de tabla */
-td input { 
-    width: 100%; border: none; background: transparent; 
-    font-size: 11px; padding: 2px; font-family: inherit; 
-}
-td input:focus { background: #eef; }
-.centro { text-align: center; }
-
-/* TOTALES */
-.totales-wrap { width: 220px; margin-left: auto; margin-bottom: 40px; }
-.linea-total { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px; }
-.final { border-top: 2px solid #333; padding-top: 4px; font-weight: bold; color: #004481; font-size: 13px; }
-
-/* FIRMAS */
-.firmas-wrap { display: flex; justify-content: space-between; margin-top: 50px; page-break-inside: avoid; }
-.caja-firma { width: 40%; text-align: center; }
-.raya { border-bottom: 1px solid #333; height: 1px; margin-bottom: 5px; }
-.caja-firma p { font-size: 10px; font-weight: bold; margin: 0; }
-.caja-firma span { font-weight: normal; font-size: 9px; color: #666; }
-
-/* TEXTO DE IMPRESION (Reemplaza a los inputs en el PDF) */
-.texto-impreso {
-    font-weight: normal; color: #000; display: block; width: 100%;
-    padding: 2px 0; font-size: 11px;
+/* Grid de Datos */
+.datos-grid {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
 }
 
-/* BOTONES */
-.panel-flotante { position: fixed; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; pointer-events: none; }
-.btn-descargar { 
-    pointer-events: auto; background: #004481; color: white; border: none; 
-    padding: 15px 30px; border-radius: 50px; font-size: 16px; font-weight: bold; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; 
+.col-cliente {
+    flex: 1;
 }
-.btn-verde { background: #28a745; color: white; border: none; padding: 5px 10px; font-size: 11px; cursor: pointer; border-radius: 3px; }
-.btn-rojo { background: #dc3545; color: white; border: none; width: 20px; cursor: pointer; border-radius: 3px; }
 
-/* RESPONSIVE */
-@media (max-width: 800px) {
-    #documento-pdf { width: 100%; padding: 15px; }
-    .seccion-datos { flex-direction: column; gap: 10px; }
-    .input-full, td input { font-size: 14px; padding: 8px; } /* Grande para celular */
+.col-folio {
+    width: 220px;
+}
+
+.fila-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.fila-input label {
+    width: 70px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.fila-input input {
+    flex: 1;
+    border: 1px solid #ddd;
+    background: #fdfdfd;
+    padding: 5px;
+    font-size: 11px;
+    font-family: inherit;
+}
+
+.col-folio input {
+    text-align: right;
+}
+
+.texto-dias {
+    display: block;
+    text-align: right;
+    font-size: 9px;
+    color: #888;
+    margin-top: -2px;
+}
+
+/* Tabla */
+.tabla-scroll {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+th {
+    background: #eee;
+    border-bottom: 2px solid #004481;
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    padding: 6px;
+    vertical-align: middle;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Inputs Tabla */
+td input {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    font-family: inherit;
+    font-size: 11px;
+    padding: 4px;
+}
+
+td input:focus {
+    border: 1px solid #004481;
+    background: #fff;
+}
+
+/* Foco visual */
+td input.qty,
+td input.precio {
+    text-align: center;
+}
+
+/* Footer */
+.footer-section {
+    margin-top: 30px;
+    page-break-inside: avoid;
+}
+
+.totales-box {
+    width: 220px;
+    margin-left: auto;
+    margin-bottom: 20px;
+}
+
+.linea-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.gran-total {
+    font-weight: bold;
+    color: #004481;
+    font-size: 14px;
+    border-top: 2px solid #333;
+    padding-top: 4px;
+}
+
+.legales {
+    font-size: 9px;
+    color: #555;
+    margin-bottom: 25px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.legales ul {
+    padding-left: 15px;
+    margin: 2px 0;
+}
+
+.firmas-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.caja-firma {
+    width: 40%;
+    text-align: center;
+}
+
+.linea {
+    border-bottom: 1px solid #333;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.caja-firma p {
+    font-size: 10px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.caja-firma span {
+    font-weight: normal;
+    font-size: 9px;
+    color: #777;
+}
+
+.final-text {
+    text-align: center;
+    font-size: 8px;
+    color: #aaa;
+    margin-top: 30px;
+}
+
+/* Botones UI */
+.btn-mini {
+    background: #28a745;
+    color: white;
+    border: none;
+    font-size: 11px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.controles {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-descargar {
+    background: #004481;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    font-weight: bold;
+}
+
+/* --- RESPONSIVE (MÓVILES) --- */
+/* Estas reglas se aplican SOLO si la pantalla es menor a 800px */
+@media screen and (max-width: 800px) {
+    body {
+        padding: 10px;
+    }
+
+    #cotizacion {
+        padding: 15px;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    /* Apilar encabezado */
+    .header-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .info-empresa {
+        text-align: center;
+    }
+
+    /* Apilar datos (cliente arriba, folio abajo) */
+    .datos-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .col-folio {
+        width: 100%;
+    }
+
+    /* Scroll horizontal en tabla para que no se rompa */
+    .tabla-scroll {
+        overflow-x: auto;
+        border: 1px solid #eee;
+    }
+
+    /* Inputs más grandes para tocar con el dedo */
+    .fila-input input,
+    td input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    /* Firmas apiladas */
+    .firmas-flex {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .caja-firma {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* --- MODO PDF (CRÍTICO: FUERZA EL DISEÑO DE PC PARA IMPRIMIR) --- */
+.modo-pdf {
+    width: 794px !important;
+    /* Fuerza ancho Carta */
+    padding: 30px 40px !important;
+    margin: 0 !important;
+}
+
+.modo-pdf .header-flex {
+    flex-direction: row !important;
+    text-align: left !important;
+}
+
+.modo-pdf .info-empresa {
+    text-align: right !important;
+}
+
+.modo-pdf .datos-grid {
+    flex-direction: row !important;
+}
+
+.modo-pdf .col-folio {
+    width: 220px !important;
+}
+
+.modo-pdf .tabla-scroll {
+    overflow-x: visible !important;
+    border: none !important;
+}
+
+.modo-pdf .firmas-flex {
+    flex-direction: row !important;
+}
+
+.modo-pdf .caja-firma {
+    width: 40% !important;
+}
+
+.modo-pdf .no-print {
+    display: none !important;
+}
+
+.modo-pdf input {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    font-size: 11px !important;
 }
