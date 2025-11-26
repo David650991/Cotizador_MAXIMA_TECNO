@@ -10,16 +10,14 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    /* Ajuste para que en móvil todo quede centrado */
     flex-direction: column;
     align-items: center;
 }
 
-/* LA HOJA DE PAPEL */
 #cotizacion-visual {
     background: white;
     width: 794px;
-    /* Ancho A4 exacto */
+    /* Ancho A4 */
     max-width: 100%;
     min-height: 1000px;
     padding: 30px 40px;
@@ -124,7 +122,7 @@ body {
     margin-top: -2px;
 }
 
-/* TABLA */
+/* TABLA (Estilos Pantalla) */
 .tabla-scroll {
     width: 100%;
     margin-bottom: 10px;
@@ -141,7 +139,6 @@ th {
     border-bottom: 2px solid #004481;
     padding: 8px;
     text-align: left;
-    white-space: nowrap;
 }
 
 td {
@@ -154,7 +151,7 @@ tr:nth-child(even) {
     background: #f9f9f9;
 }
 
-/* INPUTS TABLA */
+/* Inputs Tabla */
 td input {
     width: 100%;
     border: none;
@@ -228,7 +225,7 @@ td input.precio {
     color: #777;
 }
 
-/* FOOTER */
+/* PIE DE PAGINA */
 .footer-section {
     border-top: 2px solid #004481;
     padding-top: 10px;
@@ -252,7 +249,7 @@ td input.precio {
     margin-top: 10px;
 }
 
-/* UI BOTONES */
+/* BOTONES UI */
 .btn-mini {
     background: #28a745;
     color: white;
@@ -287,7 +284,7 @@ td input.precio {
     cursor: pointer;
 }
 
-/* --- RESPONSIVE (CELULARES) --- */
+/* --- MÓVIL (PANTALLA) --- */
 @media screen and (max-width: 800px) {
     body {
         padding: 10px;
@@ -323,13 +320,12 @@ td input.precio {
         border: 1px solid #eee;
     }
 
+    /* Scroll solo en pantalla */
     .fila-input input,
     td input {
         padding: 8px;
         font-size: 14px;
     }
-
-    /* Texto grande para dedos */
 
     .firmas-flex {
         flex-direction: column;
@@ -342,7 +338,46 @@ td input.precio {
     }
 }
 
-/* --- CLASES DE UTILIDAD PARA PDF --- */
-.no-print {}
+/* --- MODO PDF (ESTO SOLUCIONA EL DESORDEN) --- */
+.modo-pdf {
+    width: 794px !important;
+    padding: 0 !important;
+    /* El margen lo controla JS */
+    margin: 0 !important;
+    background: white !important;
+}
 
-/* Se oculta via JS o clases especificas */
+.modo-pdf .tabla-scroll {
+    overflow: visible !important;
+    /* Desactiva el scroll */
+    display: block !important;
+    width: 100% !important;
+}
+
+.modo-pdf table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    /* Fuerza columnas fijas */
+}
+
+/* Forzar envoltura de texto en PDF para que no se encime */
+.modo-pdf th,
+.modo-pdf td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    font-size: 10px !important;
+    /* Fuente ligeramente mas chica para imprimir */
+}
+
+.modo-pdf input {
+    font-size: 10px !important;
+    padding: 2px !important;
+}
+
+/* Ocultar elementos visuales que se dibujan manualmente */
+.modo-pdf #header-visual,
+.modo-pdf #cintillo-visual,
+.modo-pdf #footer-visual,
+.modo-pdf .no-print {
+    display: none !important;
+}
