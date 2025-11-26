@@ -1,4 +1,4 @@
-/* --- ESTILOS GENERALES (BASE DESKTOP) --- */
+/* --- ESTILOS GENERALES --- */
 * {
     box-sizing: border-box;
 }
@@ -10,25 +10,24 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    /* Ajuste para móviles */
+    /* Ajuste para que en móvil todo quede centrado */
     flex-direction: column;
     align-items: center;
 }
 
-/* La Hoja "Papel" */
-#cotizacion {
+/* LA HOJA DE PAPEL */
+#cotizacion-visual {
     background: white;
     width: 794px;
-    /* Ancho fijo para PC */
+    /* Ancho A4 exacto */
     max-width: 100%;
-    /* Para que no se salga en móviles */
     min-height: 1000px;
     padding: 30px 40px;
     position: relative;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Encabezado */
+/* ENCABEZADO */
 .header-flex {
     display: flex;
     justify-content: space-between;
@@ -77,7 +76,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Grid de Datos */
+/* DATOS */
 .datos-grid {
     display: flex;
     gap: 30px;
@@ -125,7 +124,7 @@ body {
     margin-top: -2px;
 }
 
-/* Tabla */
+/* TABLA */
 .tabla-scroll {
     width: 100%;
     margin-bottom: 10px;
@@ -155,10 +154,10 @@ tr:nth-child(even) {
     background: #f9f9f9;
 }
 
-/* Inputs Tabla */
+/* INPUTS TABLA */
 td input {
     width: 100%;
-    border: 1px solid transparent;
+    border: none;
     background: transparent;
     font-family: inherit;
     font-size: 11px;
@@ -166,26 +165,21 @@ td input {
 }
 
 td input:focus {
-    border: 1px solid #004481;
-    background: #fff;
+    background: #eef;
+    outline: 1px solid #ccc;
 }
 
-/* Foco visual */
 td input.qty,
 td input.precio {
     text-align: center;
 }
 
-/* Footer */
-.footer-section {
-    margin-top: 30px;
-    page-break-inside: avoid;
-}
-
+/* TOTALES Y FIRMAS */
 .totales-box {
     width: 220px;
     margin-left: auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 .linea-total {
@@ -203,23 +197,12 @@ td input.precio {
     padding-top: 4px;
 }
 
-.legales {
-    font-size: 9px;
-    color: #555;
-    margin-bottom: 25px;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-}
-
-.legales ul {
-    padding-left: 15px;
-    margin: 2px 0;
-}
-
 .firmas-flex {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
+    margin-bottom: 40px;
+    page-break-inside: avoid;
 }
 
 .caja-firma {
@@ -245,22 +228,39 @@ td input.precio {
     color: #777;
 }
 
+/* FOOTER */
+.footer-section {
+    border-top: 2px solid #004481;
+    padding-top: 10px;
+}
+
+.legales {
+    font-size: 9px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.legales ul {
+    padding-left: 15px;
+    margin: 2px 0;
+}
+
 .final-text {
     text-align: center;
     font-size: 8px;
     color: #aaa;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
-/* Botones UI */
+/* UI BOTONES */
 .btn-mini {
     background: #28a745;
     color: white;
     border: none;
     font-size: 11px;
     padding: 5px 10px;
-    cursor: pointer;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .controles {
@@ -270,6 +270,7 @@ td input.precio {
     left: 20px;
     display: flex;
     justify-content: center;
+    z-index: 999;
 }
 
 .btn-descargar {
@@ -279,28 +280,25 @@ td input.precio {
     padding: 15px 30px;
     font-size: 16px;
     border-radius: 50px;
-    cursor: pointer;
+    font-weight: bold;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 400px;
-    font-weight: bold;
+    cursor: pointer;
 }
 
-/* --- RESPONSIVE (MÓVILES) --- */
-/* Estas reglas se aplican SOLO si la pantalla es menor a 800px */
+/* --- RESPONSIVE (CELULARES) --- */
 @media screen and (max-width: 800px) {
     body {
         padding: 10px;
     }
 
-    #cotizacion {
+    #cotizacion-visual {
         padding: 15px;
         width: 100%;
         height: auto;
-        min-height: auto;
     }
 
-    /* Apilar encabezado */
     .header-flex {
         flex-direction: column;
         text-align: center;
@@ -311,7 +309,6 @@ td input.precio {
         text-align: center;
     }
 
-    /* Apilar datos (cliente arriba, folio abajo) */
     .datos-grid {
         flex-direction: column;
         gap: 15px;
@@ -321,23 +318,22 @@ td input.precio {
         width: 100%;
     }
 
-    /* Scroll horizontal en tabla para que no se rompa */
     .tabla-scroll {
         overflow-x: auto;
         border: 1px solid #eee;
     }
 
-    /* Inputs más grandes para tocar con el dedo */
     .fila-input input,
     td input {
         padding: 8px;
         font-size: 14px;
     }
 
-    /* Firmas apiladas */
+    /* Texto grande para dedos */
+
     .firmas-flex {
         flex-direction: column;
-        gap: 30px;
+        gap: 40px;
     }
 
     .caja-firma {
@@ -346,73 +342,7 @@ td input.precio {
     }
 }
 
-/* --- MODO PDF (CRÍTICO: FUERZA EL DISEÑO DE PC PARA IMPRIMIR) --- */
-.modo-pdf {
-    width: 794px !important;
-    /* Fuerza ancho Carta */
-    padding: 30px 40px !important;
-    margin: 0 !important;
-}
+/* --- CLASES DE UTILIDAD PARA PDF --- */
+.no-print {}
 
-.modo-pdf .header-flex {
-    flex-direction: row !important;
-    text-align: left !important;
-}
-
-.modo-pdf .info-empresa {
-    text-align: right !important;
-}
-
-.modo-pdf .datos-grid {
-    flex-direction: row !important;
-}
-
-.modo-pdf .col-folio {
-    width: 220px !important;
-}
-
-.modo-pdf .tabla-scroll {
-    overflow-x: visible !important;
-    border: none !important;
-}
-
-.modo-pdf .firmas-flex {
-    flex-direction: row !important;
-}
-
-.modo-pdf .caja-firma {
-    width: 40% !important;
-}
-
-.modo-pdf .no-print {
-    display: none !important;
-}
-
-.modo-pdf input {
-    border: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-    font-size: 11px !important;
-}
-
-/* --- PEGA ESTO AL FINAL DE TU CSS ACTUAL O REEMPLÁZALO --- */
-
-/* ... (Mantén tus estilos generales anteriores de body, table, inputs) ... */
-
-/* AGREGAR ESTO AL FINAL DEL ARCHIVO: */
-
-/* Clase especial para ocultar elementos HTML cuando se genera el PDF */
-.modo-pdf .ocultar-en-pdf {
-    display: none !important;
-}
-
-/* Ajuste para que la tabla no se corte a la mitad de una fila */
-tr {
-    page-break-inside: avoid;
-}
-
-.modo-pdf {
-    /* Quitamos padding porque los márgenes los pondrá el PDF */
-    padding: 0 !important; 
-    width: 100% !important;
-}
+/* Se oculta via JS o clases especificas */
