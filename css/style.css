@@ -1,29 +1,34 @@
-/* RESET */
+/* --- ESTILOS GENERALES (BASE DESKTOP) --- */
 * {
     box-sizing: border-box;
 }
 
 body {
-    background: #666;
+    background: #525659;
     margin: 0;
     padding: 20px;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
+    /* Ajuste para móviles */
+    flex-direction: column;
+    align-items: center;
 }
 
-/* HOJA CARTA WEB */
+/* La Hoja "Papel" */
 #cotizacion {
     background: white;
     width: 794px;
-    /* Ancho exacto A4 screen */
+    /* Ancho fijo para PC */
+    max-width: 100%;
+    /* Para que no se salga en móviles */
     min-height: 1000px;
-    padding: 25px 35px;
-    /* Padding interno equilibrado */
+    padding: 30px 40px;
     position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-/* ENCABEZADO */
+/* Encabezado */
 .header-flex {
     display: flex;
     justify-content: space-between;
@@ -68,15 +73,15 @@ body {
     text-align: center;
     font-size: 12px;
     font-weight: bold;
-    padding: 3px;
-    margin-bottom: 15px;
+    padding: 5px;
+    margin-bottom: 20px;
 }
 
-/* DATOS */
+/* Grid de Datos */
 .datos-grid {
     display: flex;
-    gap: 20px;
-    margin-bottom: 10px;
+    gap: 30px;
+    margin-bottom: 20px;
 }
 
 .col-cliente {
@@ -84,17 +89,17 @@ body {
 }
 
 .col-folio {
-    width: 200px;
+    width: 220px;
 }
 
 .fila-input {
     display: flex;
     align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .fila-input label {
-    width: 60px;
+    width: 70px;
     font-size: 11px;
     font-weight: bold;
 }
@@ -103,7 +108,7 @@ body {
     flex: 1;
     border: 1px solid #ddd;
     background: #fdfdfd;
-    padding: 3px;
+    padding: 5px;
     font-size: 11px;
     font-family: inherit;
 }
@@ -120,10 +125,10 @@ body {
     margin-top: -2px;
 }
 
-/* TABLA */
-.tabla-wrap {
-    margin-bottom: 5px;
-    min-height: 150px;
+/* Tabla */
+.tabla-scroll {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 table {
@@ -135,13 +140,14 @@ table {
 th {
     background: #eee;
     border-bottom: 2px solid #004481;
-    padding: 5px;
+    padding: 8px;
     text-align: left;
+    white-space: nowrap;
 }
 
 td {
     border-bottom: 1px solid #eee;
-    padding: 4px;
+    padding: 6px;
     vertical-align: middle;
 }
 
@@ -152,52 +158,57 @@ tr:nth-child(even) {
 /* Inputs Tabla */
 td input {
     width: 100%;
-    border: none;
+    border: 1px solid transparent;
     background: transparent;
     font-family: inherit;
     font-size: 11px;
-    padding: 0;
+    padding: 4px;
 }
 
+td input:focus {
+    border: 1px solid #004481;
+    background: #fff;
+}
+
+/* Foco visual */
 td input.qty,
 td input.precio {
     text-align: center;
 }
 
-/* FOOTER COMPACTO */
+/* Footer */
 .footer-section {
-    margin-top: 20px;
+    margin-top: 30px;
     page-break-inside: avoid;
 }
 
 .totales-box {
     width: 220px;
     margin-left: auto;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .linea-total {
     display: flex;
     justify-content: space-between;
     font-size: 11px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .gran-total {
     font-weight: bold;
     color: #004481;
-    font-size: 13px;
+    font-size: 14px;
     border-top: 2px solid #333;
-    padding-top: 2px;
-    margin-top: 2px;
+    padding-top: 4px;
 }
 
 .legales {
     font-size: 9px;
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border-top: 1px solid #ccc;
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 .legales ul {
@@ -208,7 +219,7 @@ td input.precio {
 .firmas-flex {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 .caja-firma {
@@ -238,37 +249,141 @@ td input.precio {
     text-align: center;
     font-size: 8px;
     color: #aaa;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-/* BOTONES (UI) */
+/* Botones UI */
 .btn-mini {
     background: #28a745;
     color: white;
     border: none;
-    font-size: 10px;
-    padding: 2px 8px;
+    font-size: 11px;
+    padding: 5px 10px;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .controles {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-descargar {
     background: #004481;
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 14px;
-    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    font-weight: bold;
 }
 
-/* MODO PDF */
+/* --- RESPONSIVE (MÓVILES) --- */
+/* Estas reglas se aplican SOLO si la pantalla es menor a 800px */
+@media screen and (max-width: 800px) {
+    body {
+        padding: 10px;
+    }
+
+    #cotizacion {
+        padding: 15px;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    /* Apilar encabezado */
+    .header-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .info-empresa {
+        text-align: center;
+    }
+
+    /* Apilar datos (cliente arriba, folio abajo) */
+    .datos-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .col-folio {
+        width: 100%;
+    }
+
+    /* Scroll horizontal en tabla para que no se rompa */
+    .tabla-scroll {
+        overflow-x: auto;
+        border: 1px solid #eee;
+    }
+
+    /* Inputs más grandes para tocar con el dedo */
+    .fila-input input,
+    td input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    /* Firmas apiladas */
+    .firmas-flex {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .caja-firma {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* --- MODO PDF (CRÍTICO: FUERZA EL DISEÑO DE PC PARA IMPRIMIR) --- */
+.modo-pdf {
+    width: 794px !important;
+    /* Fuerza ancho Carta */
+    padding: 30px 40px !important;
+    margin: 0 !important;
+}
+
+.modo-pdf .header-flex {
+    flex-direction: row !important;
+    text-align: left !important;
+}
+
+.modo-pdf .info-empresa {
+    text-align: right !important;
+}
+
+.modo-pdf .datos-grid {
+    flex-direction: row !important;
+}
+
+.modo-pdf .col-folio {
+    width: 220px !important;
+}
+
+.modo-pdf .tabla-scroll {
+    overflow-x: visible !important;
+    border: none !important;
+}
+
+.modo-pdf .firmas-flex {
+    flex-direction: row !important;
+}
+
+.modo-pdf .caja-firma {
+    width: 40% !important;
+}
+
 .modo-pdf .no-print {
     display: none !important;
 }
@@ -276,10 +391,6 @@ td input.precio {
 .modo-pdf input {
     border: none !important;
     background: transparent !important;
-}
-
-.modo-pdf #cotizacion {
-    margin: 0;
-    box-shadow: none;
-    border: none;
+    padding: 0 !important;
+    font-size: 11px !important;
 }
