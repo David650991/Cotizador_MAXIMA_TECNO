@@ -31,7 +31,6 @@ function actualizarVigencia() {
 function generarFolio() {
     const d = new Date();
     const pad = n => String(n).padStart(2, '0');
-    // Folio simple basado en fecha y hora
     return `F${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}${pad(d.getHours())}${pad(d.getMinutes())}`;
 }
 
@@ -41,7 +40,7 @@ function agregarFila() {
     tr.innerHTML = `
         <td><input type="number" class="qty" value="1" min="1"></td>
         <td><input type="text" class="desc" placeholder="Descripción"></td>
-        <td><input type="number" class="precio" value="0" step="0.50"></td>
+        <td><input type="number" class="precio" value="0" step="0.50" placeholder="Precio con IVA"></td>
         <td style="text-align: right;"><span class="imp">$0.00</span></td>
         <td class="no-print" style="text-align: center;"><button class="del" style="color:white; background:#dc3545; border:none; border-radius:4px; width:24px; height:24px; cursor:pointer;">x</button></td>
     `;
@@ -53,21 +52,31 @@ function agregarFila() {
     calcular();
 }
 
+// --- AQUÍ ESTÁ EL CAMBIO IMPORTANTE ---
 function calcular() {
-    let sub = 0;
+    let granTotal = 0; // Esta variable acumulará la suma de los "Totales con IVA"
+
     document.querySelectorAll('#tbody-productos tr').forEach(tr => {
         const q = parseFloat(tr.querySelector('.qty').value) || 0;
-        const p = parseFloat(tr.querySelector('.precio').value) || 0;
-        const imp = q * p;
-        tr.querySelector('.imp').textContent = formatear(imp);
-        sub += imp;
-    });
-    const iva = sub * 0.16;
-    const total = sub + iva;
+        const p = parseFloat(tr.querySelector('.precio').value) || 0; // Precio Unitario (YA CON IVA)
 
-    document.getElementById('subtotal').textContent = formatear(sub);
+        const importeFila = q * p; // Importe Total de la línea (YA CON IVA)
+
+        // Mostramos el importe en la tabla
+        tr.querySelector('.imp').textContent = formatear(importeFila);
+
+        // Sumamos al Gran Total
+        granTotal += importeFila;
+    });
+
+    // Desglose Inverso (Matemática Fiscal Correcta: Total / 1.16)
+    const subtotal = granTotal / 1.16;
+    const iva = granTotal - subtotal;
+
+    // Actualizamos los totales en pantalla
+    document.getElementById('subtotal').textContent = formatear(subtotal);
     document.getElementById('iva').textContent = formatear(iva);
-    document.getElementById('total').textContent = formatear(total);
+    document.getElementById('total').textContent = formatear(granTotal);
 }
 
 function formatear(n) {
@@ -78,7 +87,6 @@ function generarPDF() {
     const element = document.getElementById('cotizacion');
     const folio = document.getElementById('folio').value;
 
-    // 1. Añadimos la clase especial que fuerza el diseño de escritorio
     element.classList.add('modo-pdf');
 
     const opt = {
@@ -89,13 +97,12 @@ function generarPDF() {
             scale: 2,
             useCORS: true,
             scrollY: 0,
-            windowWidth: 800 // <--- ESTO ES EL TRUCO MAGICO PARA MOVILES
+            windowWidth: 800
         },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
     html2pdf().set(opt).from(element).save().then(() => {
-        // 2. Al terminar, quitamos la clase para seguir editando en modo móvil
         element.classList.remove('modo-pdf');
     }).catch(err => {
         console.error(err);
