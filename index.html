@@ -1,108 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cotizador MÁXIMA TECNO</title>
-  <link rel="stylesheet" href="./css/style.css?v=4.0">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cotizador MÁXIMA TECNO</title>
+    <link rel="stylesheet" href="./css/style.css?v=5.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-
 <body>
 
-  <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" id="logo-maestro" style="display:none;"
-    crossorigin="anonymous">
+    <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" id="logo-maestro" style="display:none;" crossorigin="anonymous">
 
-  <header class="header-web no-print">
-    <div class="logo-box">
-      <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" alt="Logo">
-    </div>
-    <div class="info-box">
-      <h1>MÁXIMA TECNO MULTISERVICIOS</h1>
-      <p>Soluciones Tecnológicas Confiables</p>
-    </div>
-  </header>
-
-  <div id="documento-pdf">
-
-    <div class="cintillo">COTIZACIÓN DE SERVICIOS</div>
-
-    <div class="seccion-datos">
-      <div class="col-izq">
-        <div class="input-group">
-          <label>Cliente:</label>
-          <input type="text" id="cliente" class="input-linea" placeholder="Nombre del cliente">
+    <header class="header-web no-print">
+        <div class="logo-box">
+            <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" alt="Logo">
         </div>
-        <div class="input-group">
-          <label>Teléfono:</label>
-          <input type="text" id="telefono" class="input-linea" placeholder="Teléfono">
+        <div class="info-box">
+            <h1>MÁXIMA TECNO MULTISERVICIOS</h1>
+            <p>Sistema de Cotización</p>
         </div>
-        <div class="input-group">
-          <label>Dirección:</label>
-          <input type="text" id="direccion" class="input-linea" placeholder="Dirección completa">
-        </div>
-      </div>
+    </header>
 
-      <div class="col-der">
-        <div class="input-group">
-          <label>Folio:</label>
-          <input type="text" id="folio" class="input-linea derecha" readonly>
+    <div id="documento-pdf">
+        
+        <div class="cintillo">COTIZACIÓN DE SERVICIOS</div>
+
+        <div class="seccion-datos">
+            <div class="col-izq">
+                <div class="dato-fila">
+                    <label>Cliente:</label>
+                    <input type="text" id="cliente" class="input-full" placeholder="Nombre del cliente">
+                </div>
+                <div class="dato-fila">
+                    <label>Teléfono:</label>
+                    <input type="text" id="telefono" class="input-full" placeholder="Teléfono">
+                </div>
+                <div class="dato-fila">
+                    <label>Dirección:</label>
+                    <input type="text" id="direccion" class="input-full" placeholder="Dirección completa">
+                </div>
+            </div>
+            
+            <div class="col-der">
+                <div class="dato-fila">
+                    <label>Folio:</label>
+                    <input type="text" id="folio" class="input-full derecha" readonly>
+                </div>
+                <div class="dato-fila">
+                    <label>Fecha:</label>
+                    <input type="date" id="fecha" class="input-full derecha">
+                </div>
+                <div class="dato-fila">
+                    <label>Vigencia:</label>
+                    <input type="date" id="vigencia" class="input-full derecha" readonly>
+                </div>
+            </div>
         </div>
-        <div class="input-group">
-          <label>Fecha:</label>
-          <input type="date" id="fecha" class="input-linea derecha">
+
+        <div class="tabla-wrap">
+            <table id="tabla-productos">
+                <thead>
+                    <tr>
+                        <th width="10%">Cant.</th>
+                        <th width="50%">Descripción</th>
+                        <th width="15%">P. Unit (C/IVA)</th>
+                        <th width="15%">Importe</th>
+                        <th width="10%" class="no-print">Borrar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-productos">
+                    </tbody>
+            </table>
         </div>
-        <div class="input-group">
-          <label>Vigencia:</label>
-          <input type="date" id="vigencia" class="input-linea derecha" readonly>
+
+        <button id="agregar" class="btn-verde no-print">+ Agregar Producto</button>
+
+        <div class="totales-wrap">
+            <div class="linea-total"><span>Subtotal:</span> <span id="subtotal">$0.00</span></div>
+            <div class="linea-total"><span>IVA (16%):</span> <span id="iva">$0.00</span></div>
+            <div class="linea-total final"><span>TOTAL NETO:</span> <span id="total">$0.00</span></div>
         </div>
-      </div>
+
+        <div class="firmas-wrap">
+            <div class="caja-firma">
+                <div class="raya"></div>
+                <p>Luis Alberto Álvarez Urbano<br><span>Gerente General</span></p>
+            </div>
+            <div class="caja-firma">
+                <div class="raya"></div>
+                <p>Firma del Cliente<br><span>Aceptación</span></p>
+            </div>
+        </div>
+
     </div>
 
-    <div class="tabla-contenedor">
-      <table id="tabla-productos">
-        <thead>
-          <tr>
-            <th style="width: 10%">Cant.</th>
-            <th style="width: 55%">Descripción</th>
-            <th style="width: 15%">P. Unit (con IVA)</th>
-            <th style="width: 15%">Importe</th>
-            <th style="width: 5%" class="borrar-col no-print"></th>
-          </tr>
-        </thead>
-        <tbody id="tbody-productos">
-        </tbody>
-      </table>
+    <div style="height: 100px;"></div> <div class="panel-flotante no-print">
+        <button id="descargarPDF" class="btn-descargar">Descargar PDF Profesional</button>
     </div>
 
-    <button id="agregar" class="btn-verde no-print">+ Agregar Producto</button>
-
-    <div class="totales-contenedor">
-      <div class="fila-total"><span>Subtotal:</span> <span id="subtotal">$0.00</span></div>
-      <div class="fila-total"><span>IVA (16%):</span> <span id="iva">$0.00</span></div>
-      <div class="fila-total neto"><span>TOTAL NETO:</span> <span id="total">$0.00</span></div>
-    </div>
-
-    <div class="firmas-contenedor">
-      <div class="firma-box">
-        <div class="linea-firma"></div>
-        <p>Luis Alberto Álvarez Urbano<br><span>Gerente General</span></p>
-      </div>
-      <div class="firma-box">
-        <div class="linea-firma"></div>
-        <p>Firma del Cliente<br><span>Aceptación</span></p>
-      </div>
-    </div>
-  </div>
-
-  <div style="height: 120px;"></div>
-
-  <div class="panel-botones no-print">
-    <button id="descargarPDF" class="btn-grande">Descargar PDF Profesional</button>
-  </div>
-
-  <script src="./js/script.js?v=4.0"></script>
+    <script src="./js/script.js?v=5.0"></script>
 </body>
-
 </html>
