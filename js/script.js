@@ -12,6 +12,7 @@ function iniciar() {
 
 function setFechas() {
     const hoy = new Date();
+    // Ajuste fecha local
     const local = new Date(hoy.getTime() - (hoy.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
     document.getElementById('fecha').value = local;
     actualizarVigencia();
@@ -30,6 +31,7 @@ function actualizarVigencia() {
 function generarFolio() {
     const d = new Date();
     const pad = n => String(n).padStart(2, '0');
+    // Folio simple basado en fecha y hora
     return `F${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}${pad(d.getHours())}${pad(d.getMinutes())}`;
 }
 
@@ -41,7 +43,7 @@ function agregarFila() {
         <td><input type="text" class="desc" placeholder="Descripción"></td>
         <td><input type="number" class="precio" value="0" step="0.50"></td>
         <td style="text-align: right;"><span class="imp">$0.00</span></td>
-        <td class="no-print" style="text-align: center;"><button class="del" style="color:red;border:none;background:none;cursor:pointer;">x</button></td>
+        <td class="no-print" style="text-align: center;"><button class="del" style="color:white; background:#dc3545; border:none; border-radius:4px; width:24px; height:24px; cursor:pointer;">x</button></td>
     `;
     tbody.appendChild(tr);
 
@@ -76,26 +78,28 @@ function generarPDF() {
     const element = document.getElementById('cotizacion');
     const folio = document.getElementById('folio').value;
 
-    // Activamos modo PDF
+    // 1. Añadimos la clase especial que fuerza el diseño de escritorio
     element.classList.add('modo-pdf');
 
     const opt = {
-        margin: 0, // MARGEN CERO para controlar todo con CSS
+        margin: 0,
         filename: `Cotizacion_${folio}.pdf`,
-        image: { type: 'jpeg', quality: 1 },
+        image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
             scale: 2,
-            useCORS: true, // CRÍTICO: Permite cargar la imagen del servidor
-            scrollY: 0
+            useCORS: true,
+            scrollY: 0,
+            windowWidth: 800 // <--- ESTO ES EL TRUCO MAGICO PARA MOVILES
         },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
     html2pdf().set(opt).from(element).save().then(() => {
+        // 2. Al terminar, quitamos la clase para seguir editando en modo móvil
         element.classList.remove('modo-pdf');
     }).catch(err => {
         console.error(err);
-        alert("Si estás viendo esto localmente, el logo fallará. Sube los archivos a GitHub Pages y funcionará perfecto.");
+        alert("Recuerda usar esto desde GitHub Pages para que cargue el logo.");
         element.classList.remove('modo-pdf');
     });
 }
