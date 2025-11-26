@@ -11,112 +11,95 @@
 
 <body>
 
-  <div id="cotizacion-visual">
+  <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" id="logo-maestro" style="display:none;"
+    crossorigin="anonymous">
 
-    <header class="header-flex" id="header-visual">
-      <div class="logo-container">
-        <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" alt="Logo" id="img-logo" crossorigin="anonymous">
-      </div>
-      <div class="info-empresa">
-        <h1>MÁXIMA TECNO MULTISERVICIOS</h1>
-        <h2>SOLUCIONES TECNOLÓGICAS CONFIABLES</h2>
-        <p>Calle Guadalupe Victoria S/N, Col. Patricio Chirinos</p>
-        <p>C.P. 95300, Tres Valles, Ver. | Tel: 288 139 69 42</p>
-        <p>maximatecnomultiservicios@gmail.com</p>
-      </div>
-    </header>
+  <header class="header-web no-print">
+    <div class="logo-box">
+      <img src="./imagenes/Logo_maxima_tecno_multiservicios.png" alt="Logo">
+    </div>
+    <div class="info-box">
+      <h1>MÁXIMA TECNO MULTISERVICIOS</h1>
+      <p>Soluciones Tecnológicas Confiables</p>
+    </div>
+  </header>
 
-    <div class="cintillo" id="cintillo-visual">COTIZACIÓN DE SERVICIOS</div>
+  <div id="documento-pdf">
 
-    <div id="contenido-cuerpo">
-      <div class="datos-grid">
-        <div class="col-cliente">
-          <div class="fila-input">
-            <label>Cliente:</label>
-            <input type="text" id="cliente" placeholder="Nombre del cliente">
-          </div>
-          <div class="fila-input">
-            <label>Tel:</label>
-            <input type="number" id="telefono" placeholder="Teléfono">
-          </div>
-          <div class="fila-input">
-            <label>Dirección:</label>
-            <input type="text" id="direccion" placeholder="Dirección">
-          </div>
+    <div class="cintillo">COTIZACIÓN DE SERVICIOS</div>
+
+    <div class="seccion-datos">
+      <div class="col-izq">
+        <div class="input-group">
+          <label>Cliente:</label>
+          <input type="text" id="cliente" class="input-linea" placeholder="Nombre del cliente">
         </div>
-
-        <div class="col-folio">
-          <div class="fila-input">
-            <label>Folio:</label>
-            <input type="text" id="folio" readonly>
-          </div>
-          <div class="fila-input">
-            <label>Fecha:</label>
-            <input type="date" id="fecha">
-          </div>
-          <div class="fila-input">
-            <label>Vence:</label>
-            <input type="date" id="vigencia" readonly>
-          </div>
-          <small class="texto-dias">(15 días naturales)</small>
+        <div class="input-group">
+          <label>Teléfono:</label>
+          <input type="text" id="telefono" class="input-linea" placeholder="Teléfono">
+        </div>
+        <div class="input-group">
+          <label>Dirección:</label>
+          <input type="text" id="direccion" class="input-linea" placeholder="Dirección completa">
         </div>
       </div>
 
-      <div class="tabla-scroll">
-        <table id="tabla-productos">
-          <thead>
-            <tr>
-              <th style="width: 10%">Cant.</th>
-              <th style="width: 55%">Descripción</th>
-              <th style="width: 15%">P. Unit (C/IVA)</th>
-              <th style="width: 15%">Importe</th>
-              <th style="width: 5%" class="no-print"></th>
-            </tr>
-          </thead>
-          <tbody id="tbody-productos">
-          </tbody>
-        </table>
-      </div>
-
-      <button id="agregar" class="btn-mini no-print">+ Agregar Producto</button>
-
-      <div class="totales-box">
-        <div class="linea-total"><span>Subtotal:</span> <span id="subtotal">$0.00</span></div>
-        <div class="linea-total"><span>IVA (16%):</span> <span id="iva">$0.00</span></div>
-        <div class="linea-total gran-total"><span>TOTAL NETO:</span> <span id="total">$0.00</span></div>
-      </div>
-
-      <div class="firmas-flex">
-        <div class="caja-firma">
-          <div class="linea"></div>
-          <p>Luis Alberto Álvarez Urbano<br><span>Gerente General</span></p>
+      <div class="col-der">
+        <div class="input-group">
+          <label>Folio:</label>
+          <input type="text" id="folio" class="input-linea derecha" readonly>
         </div>
-        <div class="caja-firma">
-          <div class="linea"></div>
-          <p>Firma del Cliente<br><span>Aceptación</span></p>
+        <div class="input-group">
+          <label>Fecha:</label>
+          <input type="date" id="fecha" class="input-linea derecha">
+        </div>
+        <div class="input-group">
+          <label>Vigencia:</label>
+          <input type="date" id="vigencia" class="input-linea derecha" readonly>
         </div>
       </div>
     </div>
-    <div class="footer-section" id="footer-visual">
-      <div class="legales">
-        <strong>Términos y Condiciones:</strong>
-        <ul>
-          <li>Tiempo de entrega: a partir del anticipo.</li>
-          <li>Forma de pago: 50% anticipo, 50% al finalizar satisfacción.</li>
-          <li>Precios sujetos a cambio sin previo aviso.</li>
-        </ul>
-      </div>
-      <div class="final-text">
-        MÁXIMA TECNO MULTISERVICIOS | Documento Digital
-      </div>
+
+    <div class="tabla-contenedor">
+      <table id="tabla-productos">
+        <thead>
+          <tr>
+            <th style="width: 10%">Cant.</th>
+            <th style="width: 55%">Descripción</th>
+            <th style="width: 15%">P. Unit (con IVA)</th>
+            <th style="width: 15%">Importe</th>
+            <th style="width: 5%" class="borrar-col no-print"></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-productos">
+        </tbody>
+      </table>
     </div>
 
+    <button id="agregar" class="btn-verde no-print">+ Agregar Producto</button>
+
+    <div class="totales-contenedor">
+      <div class="fila-total"><span>Subtotal:</span> <span id="subtotal">$0.00</span></div>
+      <div class="fila-total"><span>IVA (16%):</span> <span id="iva">$0.00</span></div>
+      <div class="fila-total neto"><span>TOTAL NETO:</span> <span id="total">$0.00</span></div>
+    </div>
+
+    <div class="firmas-contenedor">
+      <div class="firma-box">
+        <div class="linea-firma"></div>
+        <p>Luis Alberto Álvarez Urbano<br><span>Gerente General</span></p>
+      </div>
+      <div class="firma-box">
+        <div class="linea-firma"></div>
+        <p>Firma del Cliente<br><span>Aceptación</span></p>
+      </div>
+    </div>
   </div>
 
-  <div style="height: 100px;"></div>
+  <div style="height: 120px;"></div>
 
-  <div class="controles no-print">
-    <button id="descargarPDF" class="btn-descargar">Descargar PDF Profesional</button>
+  <div class="panel-botones no-print">
+    <button id="descargarPDF" class="btn-grande">Descargar PDF Profesional</button>
   </div>
 
   <script src="./js/script.js?v=4.0"></script>
