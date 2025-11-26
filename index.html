@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Cotizador MÁXIMA TECNO</title>
   <link rel="stylesheet" href="./css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -33,11 +33,11 @@
       <div class="col-cliente">
         <div class="fila-input">
           <label>Cliente:</label>
-          <input type="text" id="cliente" placeholder="Nombre del cliente">
+          <input type="text" id="cliente" placeholder="Nombre completo">
         </div>
         <div class="fila-input">
           <label>Tel:</label>
-          <input type="text" id="telefono" placeholder="Teléfono">
+          <input type="number" id="telefono" placeholder="Teléfono">
         </div>
         <div class="fila-input">
           <label>Dirección:</label>
@@ -62,14 +62,14 @@
       </div>
     </div>
 
-    <div class="tabla-wrap">
+    <div class="tabla-scroll">
       <table id="tabla-productos">
         <thead>
           <tr>
-            <th style="width: 10%">Cant.</th>
-            <th style="width: 55%">Descripción</th>
-            <th style="width: 15%">P. Unit.</th>
-            <th style="width: 15%">Importe</th>
+            <th style="min-width: 50px; width: 10%">Cant.</th>
+            <th style="min-width: 200px; width: 55%">Descripción</th>
+            <th style="min-width: 80px; width: 15%">P. Unit.</th>
+            <th style="min-width: 80px; width: 15%">Importe</th>
             <th style="width: 5%" class="no-print"></th>
           </tr>
         </thead>
@@ -78,7 +78,7 @@
       </table>
     </div>
 
-    <button id="agregar" class="btn-mini no-print">+ Agregar</button>
+    <button id="agregar" class="btn-mini no-print">+ Agregar Producto</button>
 
     <div class="footer-section">
 
@@ -114,6 +114,8 @@
     </div>
 
   </div>
+
+  <div style="height: 100px;"></div>
 
   <div class="controles no-print">
     <button id="descargarPDF" class="btn-descargar">Descargar PDF</button>
