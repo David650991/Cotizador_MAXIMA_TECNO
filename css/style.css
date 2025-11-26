@@ -1,131 +1,113 @@
-/* --- ESTILOS GENERALES --- */
+/* RESET */
 * {
     box-sizing: border-box;
 }
 
 body {
     background: #525659;
+    font-family: 'Helvetica', Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-#cotizacion-visual {
-    background: white;
-    width: 794px;
-    /* Ancho A4 */
-    max-width: 100%;
-    min-height: 1000px;
-    padding: 30px 40px;
-    position: relative;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-/* ENCABEZADO */
-.header-flex {
+/* ENCABEZADO WEB (Solo pantalla) */
+.header-web {
+    width: 100%;
+    max-width: 800px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-.logo-container img {
-    width: 130px;
-    height: auto;
-    display: block;
+.header-web img {
+    width: 100px;
 }
 
-.info-empresa {
-    text-align: right;
-    color: #333;
-}
-
-.info-empresa h1 {
-    font-size: 15px;
-    margin: 0;
+.header-web h1 {
+    font-size: 16px;
     color: #004481;
-    font-weight: 900;
+    margin: 0;
 }
 
-.info-empresa h2 {
-    font-size: 10px;
-    margin: 2px 0;
-    color: #555;
-    letter-spacing: 1px;
+.header-web p {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
 }
 
-.info-empresa p {
-    font-size: 10px;
-    margin: 1px 0;
-    color: #444;
+/* HOJA DE DOCUMENTO */
+#documento-pdf {
+    background: white;
+    width: 800px;
+    /* Ancho fijo para estabilidad */
+    max-width: 100%;
+    min-height: 1000px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .cintillo {
     background: #004481;
     color: white;
     text-align: center;
-    font-size: 12px;
     font-weight: bold;
-    padding: 5px;
-    margin-bottom: 20px;
+    padding: 8px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 /* DATOS */
-.datos-grid {
+.seccion-datos {
     display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 30px;
 }
 
-.col-cliente {
+.col-izq,
+.col-der {
     flex: 1;
 }
 
-.col-folio {
-    width: 220px;
-}
-
-.fila-input {
+.input-group {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
-.fila-input label {
-    width: 70px;
-    font-size: 11px;
+.input-group label {
+    width: 80px;
+    font-size: 12px;
     font-weight: bold;
+    color: #333;
 }
 
-.fila-input input {
+.input-linea {
     flex: 1;
     border: 1px solid #ddd;
-    background: #fdfdfd;
     padding: 5px;
-    font-size: 11px;
+    font-size: 12px;
+    background: #f9f9f9;
     font-family: inherit;
 }
 
-.col-folio input {
+.derecha {
     text-align: right;
 }
 
-.texto-dias {
-    display: block;
-    text-align: right;
-    font-size: 9px;
-    color: #888;
-    margin-top: -2px;
-}
-
-/* TABLA (Estilos Pantalla) */
-.tabla-scroll {
+/* TABLA */
+.tabla-contenedor {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
 }
 
 table {
@@ -144,240 +126,155 @@ th {
 td {
     border-bottom: 1px solid #eee;
     padding: 6px;
-    vertical-align: middle;
-}
-
-tr:nth-child(even) {
-    background: #f9f9f9;
 }
 
 /* Inputs Tabla */
 td input {
     width: 100%;
     border: none;
-    background: transparent;
-    font-family: inherit;
+    padding: 5px;
     font-size: 11px;
-    padding: 4px;
+    font-family: inherit;
+    background: transparent;
 }
 
 td input:focus {
     background: #eef;
-    outline: 1px solid #ccc;
 }
 
-td input.qty,
-td input.precio {
+.centro {
     text-align: center;
 }
 
-/* TOTALES Y FIRMAS */
-.totales-box {
-    width: 220px;
+/* TOTALES */
+.totales-contenedor {
+    width: 250px;
     margin-left: auto;
-    margin-bottom: 30px;
-    margin-top: 10px;
+    margin-bottom: 40px;
 }
 
-.linea-total {
+.fila-total {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
+    font-size: 12px;
 }
 
-.gran-total {
+.neto {
+    border-top: 2px solid #333;
+    padding-top: 5px;
     font-weight: bold;
     color: #004481;
     font-size: 14px;
-    border-top: 2px solid #333;
-    padding-top: 4px;
 }
 
-.firmas-flex {
+/* FIRMAS */
+.firmas-contenedor {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 50px;
     page-break-inside: avoid;
 }
 
-.caja-firma {
+.firma-box {
     width: 40%;
     text-align: center;
 }
 
-.linea {
+.linea-firma {
     border-bottom: 1px solid #333;
-    height: 30px;
+    height: 1px;
     margin-bottom: 5px;
 }
 
-.caja-firma p {
-    font-size: 10px;
+.firma-box p {
+    font-size: 11px;
     font-weight: bold;
     margin: 0;
 }
 
-.caja-firma span {
+.firma-box span {
     font-weight: normal;
-    font-size: 9px;
-    color: #777;
+    font-size: 10px;
+    color: #666;
 }
 
-/* PIE DE PAGINA */
-.footer-section {
-    border-top: 2px solid #004481;
-    padding-top: 10px;
-}
-
-.legales {
-    font-size: 9px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.legales ul {
-    padding-left: 15px;
-    margin: 2px 0;
-}
-
-.final-text {
-    text-align: center;
-    font-size: 8px;
-    color: #aaa;
-    margin-top: 10px;
-}
-
-/* BOTONES UI */
-.btn-mini {
-    background: #28a745;
-    color: white;
-    border: none;
-    font-size: 11px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.controles {
+/* BOTONES */
+.panel-botones {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    left: 20px;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: center;
-    z-index: 999;
+    pointer-events: none;
 }
 
-.btn-descargar {
+.btn-grande {
+    pointer-events: auto;
     background: #004481;
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding: 15px 40px;
     font-size: 16px;
-    border-radius: 50px;
     font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 400px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
-/* --- MÓVIL (PANTALLA) --- */
-@media screen and (max-width: 800px) {
-    body {
-        padding: 10px;
-    }
+.btn-verde {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 11px;
+    border-radius: 3px;
+}
 
-    #cotizacion-visual {
+.btn-rojo {
+    background: #dc3545;
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+/* CLASE MAGICA PARA PDF (Se activa al imprimir) */
+.modo-impresion .input-linea,
+.modo-impresion td input {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.modo-impresion .no-print {
+    display: none !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    #documento-pdf {
         padding: 15px;
         width: 100%;
-        height: auto;
     }
 
-    .header-flex {
+    .seccion-datos {
         flex-direction: column;
-        text-align: center;
         gap: 10px;
     }
 
-    .info-empresa {
-        text-align: center;
+    .firmas-contenedor {
+        gap: 20px;
     }
 
-    .datos-grid {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .col-folio {
-        width: 100%;
-    }
-
-    .tabla-scroll {
-        overflow-x: auto;
-        border: 1px solid #eee;
-    }
-
-    /* Scroll solo en pantalla */
-    .fila-input input,
-    td input {
-        padding: 8px;
+    .input-linea {
         font-size: 14px;
+        padding: 8px;
     }
 
-    .firmas-flex {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .caja-firma {
-        width: 80%;
-        margin: 0 auto;
-    }
-}
-
-/* --- MODO PDF (ESTO SOLUCIONA EL DESORDEN) --- */
-.modo-pdf {
-    width: 794px !important;
-    padding: 0 !important;
-    /* El margen lo controla JS */
-    margin: 0 !important;
-    background: white !important;
-}
-
-.modo-pdf .tabla-scroll {
-    overflow: visible !important;
-    /* Desactiva el scroll */
-    display: block !important;
-    width: 100% !important;
-}
-
-.modo-pdf table {
-    width: 100% !important;
-    table-layout: fixed !important;
-    /* Fuerza columnas fijas */
-}
-
-/* Forzar envoltura de texto en PDF para que no se encime */
-.modo-pdf th,
-.modo-pdf td {
-    white-space: normal !important;
-    word-wrap: break-word !important;
-    font-size: 10px !important;
-    /* Fuente ligeramente mas chica para imprimir */
-}
-
-.modo-pdf input {
-    font-size: 10px !important;
-    padding: 2px !important;
-}
-
-/* Ocultar elementos visuales que se dibujan manualmente */
-.modo-pdf #header-visual,
-.modo-pdf #cintillo-visual,
-.modo-pdf #footer-visual,
-.modo-pdf .no-print {
-    display: none !important;
+    /* Más fácil de tocar */
 }
